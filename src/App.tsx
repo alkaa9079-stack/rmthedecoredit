@@ -18,8 +18,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/:tier" element={<BundlePage />} />
           <Route path="/registry" element={<RegistryPage />} />
+          <Route path="/:tier" element={<BundlePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
