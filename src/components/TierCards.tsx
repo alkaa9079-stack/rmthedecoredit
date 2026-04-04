@@ -27,7 +27,7 @@ const tiers = [
     bgClass: "bg-tier-grand",
     accentClass: "text-tier-grand-accent",
     borderColor: "border-tier-grand-accent/40",
-    link: "/grand",
+    link: "/tier/grand_gesture",
   },
 ];
 

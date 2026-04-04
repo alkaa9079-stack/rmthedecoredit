@@ -4,7 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
-import BundlePage from "./pages/BundlePage.tsx";
+import TierPage from "./pages/TierPage.tsx";
 import RegistryPage from "./pages/RegistryPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -19,7 +19,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/registry" element={<RegistryPage />} />
-          <Route path="/:tier" element={<BundlePage />} />
+          <Route path="/tier/:tierId" element={<TierPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
