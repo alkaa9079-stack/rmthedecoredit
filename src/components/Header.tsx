@@ -15,7 +15,6 @@ const Header = () => {
           <Link to="/tier/keepsake" className="text-sm tracking-wide text-muted-foreground hover:text-foreground transition-colors">
             Collections
           </Link>
-          </Link>
           <Link to="/registry" className="text-sm tracking-wide text-muted-foreground hover:text-foreground transition-colors">
             Private Registry
           </Link>
