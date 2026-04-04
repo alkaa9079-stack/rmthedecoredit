@@ -9,7 +9,7 @@ const tiers = [
     bgClass: "bg-tier-keepsake",
     accentClass: "text-tier-keepsake-accent",
     borderColor: "border-tier-keepsake-accent/40",
-    link: "/keepsake",
+    link: "/tier/keepsake",
   },
   {
     name: "The Sanctuary",
