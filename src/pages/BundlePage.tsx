@@ -3,6 +3,7 @@ import { ExternalLink, Check } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import useScrollFadeIn from "@/hooks/useScrollFadeIn";
+import { appendAffiliateTag } from "@/lib/amazonAffiliate";
 
 interface Product {
   name: string;
