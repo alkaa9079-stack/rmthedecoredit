@@ -9,7 +9,7 @@ const tiers = [
     bgClass: "bg-tier-keepsake",
     accentClass: "text-tier-keepsake-accent",
     borderColor: "border-tier-keepsake-accent/40",
-    link: "/keepsake",
+    link: "/tier/keepsake",
   },
   {
     name: "The Sanctuary",
@@ -18,7 +18,7 @@ const tiers = [
     bgClass: "bg-tier-sanctuary",
     accentClass: "text-tier-sanctuary-accent",
     borderColor: "border-tier-sanctuary-accent/40",
-    link: "/sanctuary",
+    link: "/tier/sanctuary",
   },
   {
     name: "The Grand Gesture",
@@ -27,7 +27,7 @@ const tiers = [
     bgClass: "bg-tier-grand",
     accentClass: "text-tier-grand-accent",
     borderColor: "border-tier-grand-accent/40",
-    link: "/grand",
+    link: "/tier/grand_gesture",
   },
 ];
 

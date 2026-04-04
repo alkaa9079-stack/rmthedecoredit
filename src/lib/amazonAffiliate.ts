@@ -3,7 +3,7 @@
  * Automatically appends the Associate tag to any amazon.co.uk link.
  */
 
-const ASSOCIATE_TAG = "YOUR-TAG-21";
+const ASSOCIATE_TAG = "rm8thedecored-21";
 
 export const appendAffiliateTag = (url: string): string => {
   if (!url || url === "#") return url;
