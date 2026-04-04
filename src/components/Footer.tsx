@@ -19,13 +19,13 @@ const Footer = () => {
               Collections
             </h4>
             <div className="space-y-2">
-              <Link to="/keepsake" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+              <Link to="/tier/keepsake" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                 The Keepsake
               </Link>
-              <Link to="/sanctuary" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+              <Link to="/tier/sanctuary" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                 The Sanctuary
               </Link>
-              <Link to="/grand" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+              <Link to="/tier/grand_gesture" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                 The Grand Gesture
               </Link>
             </div>
@@ -65,9 +65,15 @@ const Footer = () => {
             advertising and linking to Amazon.co.uk. As an Amazon Associate, we earn from qualifying purchases.
             Product prices and availability are subject to change.
           </p>
-          <p className="text-[11px] text-primary-foreground/25 mt-4">
-            © {new Date().getFullYear()} RM The Decor Edit. All rights reserved.
-          </p>
+          <div className="flex items-center justify-center gap-4 mt-4">
+            <Link to="/privacy" className="text-[11px] text-primary-foreground/35 hover:text-primary-foreground/60 transition-colors">
+              Privacy &amp; Disclosure
+            </Link>
+            <span className="text-primary-foreground/20">·</span>
+            <p className="text-[11px] text-primary-foreground/25">
+              © {new Date().getFullYear()} RM The Decor Edit. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
