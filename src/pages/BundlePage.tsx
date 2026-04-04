@@ -167,14 +167,19 @@ const BundlePage = () => {
                         <h3 className="font-serif text-lg font-semibold text-foreground mb-1">{product.name}</h3>
                         <p className="text-sm text-muted-foreground leading-relaxed mb-4">{product.description}</p>
                       </div>
-                      <a
-                        href={product.amazonUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 text-xs uppercase tracking-[0.15em] py-2.5 border border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-colors rounded-sm"
-                      >
-                        View on Amazon <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
+                      <div className="flex flex-col items-center gap-1">
+                        <span className="text-[10px] uppercase tracking-[0.2em] font-sans text-muted-foreground/60 font-medium">
+                          #Ad
+                        </span>
+                        <a
+                          href={appendAffiliateTag(product.amazonUrl)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full flex items-center justify-center gap-2 text-xs uppercase tracking-[0.15em] py-2.5 border border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-colors rounded-sm"
+                        >
+                          View on Amazon <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
                     </div>
                   ))}
                 </div>
