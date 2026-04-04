@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import TierPage from "./pages/TierPage.tsx";
 import RegistryPage from "./pages/RegistryPage.tsx";
+import PrivacyPage from "./pages/PrivacyPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -19,6 +20,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/registry" element={<RegistryPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/tier/:tierId" element={<TierPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
