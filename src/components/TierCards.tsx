@@ -18,7 +18,7 @@ const tiers = [
     bgClass: "bg-tier-sanctuary",
     accentClass: "text-tier-sanctuary-accent",
     borderColor: "border-tier-sanctuary-accent/40",
-    link: "/sanctuary",
+    link: "/tier/sanctuary",
   },
   {
     name: "The Grand Gesture",
