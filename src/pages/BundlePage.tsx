@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { ExternalLink, Check } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import useScrollFadeIn from "@/hooks/useScrollFadeIn";
 
 interface Product {
   name: string;
@@ -106,6 +107,7 @@ const tierData: Record<string, { title: string; price: string; description: stri
 const BundlePage = () => {
   const { tier } = useParams<{ tier: string }>();
   const data = tierData[tier || "keepsake"];
+  useScrollFadeIn();
 
   if (!data) {
     return (
@@ -144,7 +146,7 @@ const BundlePage = () => {
         <section className="py-20">
           <div className="container mx-auto px-6">
             {data.bundles.map((bundle, bi) => (
-              <div key={bundle.name} className={`${bi > 0 ? "mt-20" : ""}`}>
+              <div key={bundle.name} className={`${bi > 0 ? "mt-20" : ""} scroll-fade-in`}>
                 <div className="mb-10">
                   <h2 className="font-serif text-2xl md:text-3xl font-semibold text-foreground mb-2">
                     {bundle.name}
@@ -155,7 +157,7 @@ const BundlePage = () => {
                   {bundle.products.map((product) => (
                     <div
                       key={product.name}
-                      className="bg-card border border-border rounded-lg p-6 flex flex-col justify-between hover:shadow-md transition-shadow"
+                      className="bg-card border border-border rounded-lg p-6 flex flex-col justify-between hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
                     >
                       <div>
                         <div className={`w-full aspect-[4/3] ${data.bgClass} rounded-sm mb-4 flex items-center justify-center`}>
@@ -181,7 +183,7 @@ const BundlePage = () => {
         </section>
 
         {/* Delivery Options */}
-        <section className="py-16 bg-secondary">
+        <section className="py-16 bg-secondary scroll-fade-in">
           <div className="container mx-auto px-6">
             <h2 className="font-serif text-2xl md:text-3xl font-medium text-foreground text-center mb-10">
               Delivery &amp; Presentation

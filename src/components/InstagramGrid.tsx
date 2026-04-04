@@ -18,7 +18,7 @@ const pastelBgs = [
 
 const InstagramGrid = () => {
   return (
-    <section className="py-20 border-t border-border">
+    <section className="py-20 border-t border-border scroll-fade-in">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground mb-3">

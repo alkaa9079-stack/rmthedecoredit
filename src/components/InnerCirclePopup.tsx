@@ -22,7 +22,7 @@ const InnerCirclePopup = () => {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 animate-slide-in-right">
-      <div className="bg-card border border-border shadow-xl rounded-lg p-5 max-w-xs relative">
+      <div className="glass shadow-xl rounded-lg p-5 max-w-xs relative">
         <button
           onClick={handleDismiss}
           className="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors"
@@ -42,7 +42,7 @@ const InnerCirclePopup = () => {
         <input
           type="email"
           placeholder="Your email address"
-          className="w-full text-sm px-3 py-2 border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground mb-3 focus:outline-none focus:ring-1 focus:ring-ring"
+          className="w-full text-sm px-3 py-2 border border-border rounded-sm bg-background/60 text-foreground placeholder:text-muted-foreground mb-3 focus:outline-none focus:ring-1 focus:ring-ring"
         />
         <button
           onClick={handleDismiss}

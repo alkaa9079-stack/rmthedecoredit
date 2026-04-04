@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import useScrollFadeIn from "@/hooks/useScrollFadeIn";
 
 interface RegistryEntry {
   id: string;
@@ -19,6 +20,7 @@ const RegistryPage = () => {
   const [name, setName] = useState("");
   const [occasion, setOccasion] = useState("Birthday");
   const [date, setDate] = useState<Date>();
+  useScrollFadeIn();
 
   const addEntry = () => {
     if (!name || !date) return;
@@ -37,7 +39,7 @@ const RegistryPage = () => {
       <main className="pt-24">
         <section className="py-20">
           <div className="container mx-auto px-6 max-w-2xl">
-            <div className="text-center mb-14">
+            <div className="text-center mb-14 scroll-fade-in">
               <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground mb-3">
                 The Forget-Proof Scheduler
               </p>
@@ -51,7 +53,7 @@ const RegistryPage = () => {
             </div>
 
             {/* Add form */}
-            <div className="bg-card border border-border rounded-lg p-6 mb-8">
+            <div className="bg-card border border-gold-light rounded-lg p-6 mb-8 scroll-fade-in">
               <h3 className="font-serif text-lg font-semibold text-foreground mb-4">Add a Date</h3>
               <div className="space-y-4">
                 <div>
@@ -62,7 +64,7 @@ const RegistryPage = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Charlotte"
-                    className="w-full text-sm px-3 py-2.5 border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+                    className="w-full text-sm px-3 py-2.5 border border-border rounded-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-gold"
                   />
                 </div>
                 <div>
@@ -72,7 +74,7 @@ const RegistryPage = () => {
                   <select
                     value={occasion}
                     onChange={(e) => setOccasion(e.target.value)}
-                    className="w-full text-sm px-3 py-2.5 border border-border rounded-sm bg-background text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+                    className="w-full text-sm px-3 py-2.5 border border-border rounded-sm bg-background text-foreground focus:outline-none focus:ring-1 focus:ring-gold"
                   >
                     <option>Birthday</option>
                     <option>Anniversary</option>
@@ -91,7 +93,7 @@ const RegistryPage = () => {
                     <PopoverTrigger asChild>
                       <button
                         className={cn(
-                          "w-full flex items-center text-sm px-3 py-2.5 border border-border rounded-sm bg-background text-left",
+                          "w-full flex items-center text-sm px-3 py-2.5 border border-border rounded-sm bg-background text-left focus:outline-none focus:ring-1 focus:ring-gold",
                           !date && "text-muted-foreground"
                         )}
                       >
@@ -113,7 +115,7 @@ const RegistryPage = () => {
                 <button
                   onClick={addEntry}
                   disabled={!name || !date}
-                  className="flex items-center justify-center gap-2 w-full text-xs uppercase tracking-[0.15em] py-3 bg-foreground text-background rounded-sm hover:bg-foreground/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="flex items-center justify-center gap-2 w-full text-xs uppercase tracking-[0.15em] py-3 bg-cta text-cta-foreground rounded-sm hover:bg-cta/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <Plus className="w-4 h-4" /> Save to Registry
                 </button>
@@ -122,13 +124,13 @@ const RegistryPage = () => {
 
             {/* Saved entries */}
             {entries.length > 0 && (
-              <div>
+              <div className="scroll-fade-in">
                 <h3 className="font-serif text-lg font-semibold text-foreground mb-4">Your Dates</h3>
                 <div className="space-y-3">
                   {entries.map((entry) => (
                     <div
                       key={entry.id}
-                      className="flex items-center justify-between bg-card border border-border rounded-lg px-5 py-4"
+                      className="flex items-center justify-between bg-card border border-gold-light/50 rounded-lg px-5 py-4"
                     >
                       <div>
                         <p className="text-sm font-medium text-foreground">{entry.name}</p>

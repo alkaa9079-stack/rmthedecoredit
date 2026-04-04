@@ -7,49 +7,50 @@
 @layer base {
   :root {
     --background: 40 33% 97%;
-    --foreground: 220 20% 15%;
+    --foreground: 0 0% 18%;
 
     --card: 40 30% 99%;
-    --card-foreground: 220 20% 15%;
+    --card-foreground: 0 0% 18%;
 
     --popover: 40 30% 99%;
-    --popover-foreground: 220 20% 15%;
+    --popover-foreground: 0 0% 18%;
 
-    --primary: 220 20% 15%;
+    --primary: 0 0% 18%;
     --primary-foreground: 40 33% 97%;
 
     --secondary: 40 20% 93%;
-    --secondary-foreground: 220 20% 15%;
+    --secondary-foreground: 0 0% 18%;
 
     --muted: 40 15% 94%;
-    --muted-foreground: 220 10% 50%;
+    --muted-foreground: 0 0% 45%;
 
     --accent: 40 20% 93%;
-    --accent-foreground: 220 20% 15%;
+    --accent-foreground: 0 0% 18%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 40 15% 88%;
     --input: 40 15% 88%;
-    --ring: 220 20% 15%;
+    --ring: 0 0% 18%;
 
     --radius: 0.5rem;
 
     /* Tier colors */
-    --tier-keepsake: 350 60% 90%;
-    --tier-keepsake-accent: 350 55% 75%;
-    --tier-sanctuary: 155 40% 88%;
-    --tier-sanctuary-accent: 155 35% 60%;
-    --tier-grand: 260 40% 90%;
-    --tier-grand-accent: 260 35% 70%;
+    --tier-keepsake: 350 60% 94%;
+    --tier-keepsake-accent: 350 45% 65%;
+    --tier-sanctuary: 155 40% 92%;
+    --tier-sanctuary-accent: 155 35% 55%;
+    --tier-grand: 260 40% 93%;
+    --tier-grand-accent: 260 30% 65%;
 
     /* Gold accent */
-    --gold: 40 60% 55%;
+    --gold: 40 50% 55%;
     --gold-light: 40 50% 85%;
+    --gold-deep: 40 55% 46%;
 
-    /* CTA */
-    --cta: 25 90% 55%;
+    /* CTA - now deep gold */
+    --cta: 40 55% 46%;
     --cta-foreground: 0 0% 100%;
 
     --sidebar-background: 0 0% 98%;
@@ -69,14 +70,35 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    line-height: 1.6;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
+    letter-spacing: 0.02em;
   }
 }
 
 @layer utilities {
   .font-editorial {
     font-family: 'Playfair Display', serif;
+  }
+  
+  /* Scroll fade-in animation */
+  .scroll-fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .scroll-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Glassmorphism */
+  .glass {
+    background: hsla(40, 30%, 99%, 0.72);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    border: 1px solid hsla(40, 15%, 88%, 0.5);
   }
 }
