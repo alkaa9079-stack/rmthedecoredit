@@ -1,28 +1,37 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
 
 const InnerCirclePopup = () => {
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
+  const handleDismiss = useCallback(() => {
+    setDismissed(true);
+    setVisible(false);
+    sessionStorage.setItem("innerCircleDismissed", "true");
+  }, []);
+
   useEffect(() => {
-    const alreadyDismissed = localStorage.getItem("innerCircleDismissed");
+    const alreadyDismissed = sessionStorage.getItem("innerCircleDismissed");
     if (alreadyDismissed) return;
-    const timer = setTimeout(() => setVisible(true), 4000);
+    const timer = setTimeout(() => setVisible(true), 8000);
     return () => clearTimeout(timer);
   }, []);
 
-  const handleDismiss = () => {
-    setDismissed(true);
-    setVisible(false);
-    localStorage.setItem("innerCircleDismissed", "true");
-  };
+  useEffect(() => {
+    if (!visible) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleDismiss();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [visible, handleDismiss]);
 
   if (!visible || dismissed) return null;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 animate-slide-in-right">
-      <div className="glass shadow-xl rounded-lg p-5 max-w-xs relative">
+      <div className="bg-background/40 backdrop-blur-xl border border-border/50 shadow-xl rounded-lg p-5 max-w-xs relative">
         <button
           onClick={handleDismiss}
           className="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors"
