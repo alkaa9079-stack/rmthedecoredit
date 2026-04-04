@@ -8,7 +8,7 @@ const tiers = [
     description: "Thoughtful gestures that create lasting memories.",
     bgClass: "bg-tier-keepsake",
     accentClass: "text-tier-keepsake-accent",
-    borderClass: "border-tier-keepsake-accent/30",
+    borderColor: "border-tier-keepsake-accent/40",
     link: "/keepsake",
   },
   {
@@ -17,7 +17,7 @@ const tiers = [
     description: "Elevated experiences for those you cherish.",
     bgClass: "bg-tier-sanctuary",
     accentClass: "text-tier-sanctuary-accent",
-    borderClass: "border-tier-sanctuary-accent/30",
+    borderColor: "border-tier-sanctuary-accent/40",
     link: "/sanctuary",
   },
   {
@@ -26,7 +26,7 @@ const tiers = [
     description: "Extraordinary moments for extraordinary people.",
     bgClass: "bg-tier-grand",
     accentClass: "text-tier-grand-accent",
-    borderClass: "border-tier-grand-accent/30",
+    borderColor: "border-tier-grand-accent/40",
     link: "/grand",
   },
 ];
@@ -41,7 +41,7 @@ const TierCards = () => {
   return (
     <section id="tiers" className="py-24 md:py-32">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 scroll-fade-in">
           <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground mb-3">
             The Curated System
           </p>
@@ -56,8 +56,8 @@ const TierCards = () => {
           {tiers.map((tier, i) => (
             <div
               key={tier.name}
-              className={`${tier.bgClass} rounded-lg p-8 flex flex-col justify-between border ${tier.borderClass} hover:shadow-lg transition-shadow duration-300`}
-              style={{ animationDelay: `${i * 150}ms` }}
+              className={`scroll-fade-in ${tier.bgClass} rounded-lg p-8 flex flex-col justify-between border ${tier.borderColor} transition-all duration-300 hover:shadow-lg hover:scale-[1.02]`}
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
               <div>
                 <p className={`text-xs uppercase tracking-[0.25em] ${tier.accentClass} mb-2`}>
@@ -82,7 +82,7 @@ const TierCards = () => {
                 to={tier.link}
                 className="block text-center text-xs uppercase tracking-[0.2em] py-3 border border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-colors duration-300 rounded-sm"
               >
-                View Collection
+                Discover the Collection
               </Link>
             </div>
           ))}

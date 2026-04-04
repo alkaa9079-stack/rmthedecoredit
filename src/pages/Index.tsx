@@ -4,8 +4,11 @@ import TierCards from "@/components/TierCards";
 import InstagramGrid from "@/components/InstagramGrid";
 import InnerCirclePopup from "@/components/InnerCirclePopup";
 import Footer from "@/components/Footer";
+import useScrollFadeIn from "@/hooks/useScrollFadeIn";
 
 const Index = () => {
+  useScrollFadeIn();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -13,7 +16,7 @@ const Index = () => {
         <HeroSection />
         <TierCards />
         {/* Editorial Quote */}
-        <section className="py-20 border-t border-border">
+        <section className="py-20 border-t border-border scroll-fade-in">
           <div className="container mx-auto px-6 text-center max-w-2xl">
             <blockquote className="font-serif text-2xl md:text-3xl italic text-foreground leading-relaxed">
               "The best gifts aren't found — they're curated, with intention, for someone who matters."

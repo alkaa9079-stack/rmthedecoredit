@@ -54,6 +54,7 @@ export default {
         gold: {
           DEFAULT: "hsl(var(--gold))",
           light: "hsl(var(--gold-light))",
+          deep: "hsl(var(--gold-deep))",
         },
         cta: {
           DEFAULT: "hsl(var(--cta))",
