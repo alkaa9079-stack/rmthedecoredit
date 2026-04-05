@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CalendarIcon, Plus, Trash2, Clock } from "lucide-react";
 import { format, differenceInDays, isPast, addYears } from "date-fns";
+import PageSpinner from "@/components/PageSpinner";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -170,11 +171,7 @@ const RegistryPage = () => {
             <div className="scroll-fade-in">
               <h3 className="font-serif text-lg font-semibold text-foreground mb-4">My Milestones</h3>
               {isLoading ? (
-                <div className="space-y-3">
-                  {[1, 2, 3].map((i) => (
-                    <Skeleton key={i} className="h-[72px] w-full rounded-lg" />
-                  ))}
-                </div>
+                <PageSpinner />
               ) : milestones.length === 0 ? (
                 <p className="text-sm text-muted-foreground text-center py-8 border border-dashed border-border rounded-lg">
                   No milestones yet. Add your first date above.

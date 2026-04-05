@@ -1,18 +1,29 @@
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import TierCards from "@/components/TierCards";
 import InstagramGrid from "@/components/InstagramGrid";
 import InnerCirclePopup from "@/components/InnerCirclePopup";
 import Footer from "@/components/Footer";
+import PageSpinner from "@/components/PageSpinner";
 import useScrollFadeIn from "@/hooks/useScrollFadeIn";
 
 const Index = () => {
+  const [ready, setReady] = useState(false);
   useScrollFadeIn();
+
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), 80);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main>
+      {!ready ? (
+        <PageSpinner />
+      ) : (
+        <main>
         <HeroSection />
         <TierCards />
         {/* Editorial Quote */}
@@ -27,7 +38,8 @@ const Index = () => {
           </div>
         </section>
         <InstagramGrid />
-      </main>
+        </main>
+      )}
       <Footer />
       <InnerCirclePopup />
     </div>
