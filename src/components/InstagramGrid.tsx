@@ -32,7 +32,8 @@ const InstagramGrid = () => {
           {placeholderImages.map((img, i) => (
             <div
               key={img.id}
-              className={`aspect-square ${pastelBgs[i]} rounded-sm flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity`}
+              className={`${pastelBgs[i]} rounded-sm flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity overflow-hidden`}
+              style={{ aspectRatio: "1/1" }}
             >
               <span className="text-xs text-muted-foreground text-center px-4">{img.alt}</span>
             </div>

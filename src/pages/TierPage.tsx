@@ -7,6 +7,7 @@ import useScrollFadeIn from "@/hooks/useScrollFadeIn";
 import { appendAffiliateTag } from "@/lib/amazonAffiliate";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
+import OptimizedImage from "@/components/OptimizedImage";
 
 const tierMeta: Record<string, { title: string; price: string; description: string; bgClass: string; accentClass: string }> = {
   keepsake: {
@@ -86,9 +87,12 @@ const TierPage = () => {
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 {Array.from({ length: 6 }).map((_, i) => (
                   <div key={i} className="bg-card border border-border rounded-lg p-6">
-                    <Skeleton className="w-full aspect-[4/3] rounded-sm mb-4" />
+                    <div className="w-full rounded-sm mb-4 overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                      <Skeleton className="w-full h-full" />
+                    </div>
                     <Skeleton className="h-5 w-3/4 mb-2" />
                     <Skeleton className="h-4 w-full mb-1" />
+                    <Skeleton className="h-4 w-2/3 mb-1" />
                     <Skeleton className="h-9 w-full mt-4" />
                   </div>
                 ))}
@@ -102,15 +106,18 @@ const TierPage = () => {
                   >
                     <div>
                       {product.image_url ? (
-                        <img
-                          src={product.image_url}
-                          alt={product.name}
-                          className="w-full aspect-[4/3] object-cover rounded-sm mb-4"
-                          loading="lazy"
-                        />
+                        <div className="mb-4">
+                          <OptimizedImage
+                            src={product.image_url}
+                            alt={product.name}
+                            aspectRatio="4/3"
+                          />
+                        </div>
                       ) : (
-                        <div className={`w-full aspect-[4/3] ${meta.bgClass} rounded-sm mb-4 flex items-center justify-center`}>
-                          <span className="text-xs text-muted-foreground">{product.name}</span>
+                        <div className="w-full rounded-sm mb-4 flex items-center justify-center" style={{ aspectRatio: "4/3" }}>
+                          <div className={`w-full h-full ${meta.bgClass} rounded-sm flex items-center justify-center`}>
+                            <span className="text-xs text-muted-foreground">{product.name}</span>
+                          </div>
                         </div>
                       )}
                       <h3 className="font-serif text-lg font-semibold text-foreground mb-1">{product.name}</h3>

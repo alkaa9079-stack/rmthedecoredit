@@ -161,8 +161,10 @@ const BundlePage = () => {
                       className="bg-card border border-border rounded-lg p-6 flex flex-col justify-between hover:shadow-md transition-all duration-300 hover:scale-[1.02]"
                     >
                       <div>
-                        <div className={`w-full aspect-[4/3] ${data.bgClass} rounded-sm mb-4 flex items-center justify-center`}>
-                          <span className="text-xs text-muted-foreground">{product.name}</span>
+                        <div className="w-full rounded-sm mb-4 overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                          <div className={`w-full h-full ${data.bgClass} flex items-center justify-center`}>
+                            <span className="text-xs text-muted-foreground">{product.name}</span>
+                          </div>
                         </div>
                         <h3 className="font-serif text-lg font-semibold text-foreground mb-1">{product.name}</h3>
                         <p className="text-sm text-muted-foreground leading-relaxed mb-4">{product.description}</p>
