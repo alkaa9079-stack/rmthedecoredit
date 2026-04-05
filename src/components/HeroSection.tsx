@@ -1,14 +1,22 @@
+import { useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 import heroImage from "@/assets/hero-gifting.jpg";
 
 const HeroSection = () => {
+  const [heroLoaded, setHeroLoaded] = useState(false);
+
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       <div className="absolute inset-0">
+        {!heroLoaded && <Skeleton className="absolute inset-0 w-full h-full" />}
         <img
           src={heroImage}
           alt="Luxury curated gift arrangement with cream and blush tones"
-          className="w-full h-full object-cover"
+          className={`w-full h-full object-cover transition-opacity duration-500 ${heroLoaded ? "opacity-100" : "opacity-0"}`}
           loading="eager"
+          decoding="async"
+          fetchPriority="high"
+          onLoad={() => setHeroLoaded(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/50 to-transparent" />
       </div>
