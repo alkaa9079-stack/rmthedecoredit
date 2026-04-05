@@ -111,6 +111,29 @@ const PrivacyPage = () => {
                 </p>
               </div>
 
+              {/* Data Privacy Complaints */}
+              <div>
+                <h2 className="font-serif text-2xl font-semibold text-foreground mb-4">
+                  Data Privacy Complaints
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  If you believe your personal data has been mishandled or you are dissatisfied
+                  with our response to a data request, you may submit a formal complaint to us at{" "}
+                  <span className="text-foreground">hello@rmthedecoredit.co.uk</span>.
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  We aim to acknowledge all data privacy complaints within <span className="text-foreground font-medium">48 hours</span> and
+                  to provide a full resolution within <span className="text-foreground font-medium">30 calendar days</span>.
+                  If we require additional time, we will notify you of the reason and expected timeline.
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  If you remain unsatisfied with our response, you have the right to escalate
+                  your complaint to the{" "}
+                  <span className="text-foreground">Information Commissioner's Office (ICO)</span> at{" "}
+                  <span className="text-foreground">ico.org.uk</span>.
+                </p>
+              </div>
+
               {/* Contact */}
               <div className="border-t border-border pt-8">
                 <h2 className="font-serif text-2xl font-semibold text-foreground mb-4">
