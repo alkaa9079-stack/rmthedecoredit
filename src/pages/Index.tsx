@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import TierCards from "@/components/TierCards";
@@ -12,11 +12,10 @@ const Index = () => {
   const [ready, setReady] = useState(false);
   useScrollFadeIn();
 
-  // Brief timeout to prevent blank flash while fonts/images initialise
-  useState(() => {
-    const t = setTimeout(() => setReady(true), 100);
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), 80);
     return () => clearTimeout(t);
-  });
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
