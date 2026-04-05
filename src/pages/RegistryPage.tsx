@@ -1,36 +1,80 @@
 import { useState } from "react";
-import { CalendarIcon, Plus, Trash2 } from "lucide-react";
-import { format } from "date-fns";
+import { CalendarIcon, Plus, Trash2, Clock } from "lucide-react";
+import { format, differenceInDays, isPast, addYears } from "date-fns";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 import useScrollFadeIn from "@/hooks/useScrollFadeIn";
 
-interface RegistryEntry {
-  id: string;
-  name: string;
-  occasion: string;
-  date: Date;
-}
-
 const RegistryPage = () => {
-  const [entries, setEntries] = useState<RegistryEntry[]>([]);
   const [name, setName] = useState("");
   const [occasion, setOccasion] = useState("Birthday");
   const [date, setDate] = useState<Date>();
+  const queryClient = useQueryClient();
   useScrollFadeIn();
 
-  const addEntry = () => {
-    if (!name || !date) return;
-    setEntries([...entries, { id: crypto.randomUUID(), name, occasion, date }]);
-    setName("");
-    setDate(undefined);
-  };
+  const { data: milestones = [], isLoading } = useQuery({
+    queryKey: ["milestones"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("milestones")
+        .select("*")
+        .order("date", { ascending: true });
+      if (error) throw error;
+      return data;
+    },
+  });
 
-  const removeEntry = (id: string) => {
-    setEntries(entries.filter((e) => e.id !== id));
+  const addMutation = useMutation({
+    mutationFn: async () => {
+      if (!name || !date) return;
+      const { error } = await supabase.from("milestones").insert({
+        name,
+        occasion,
+        date: format(date, "yyyy-MM-dd"),
+      });
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["milestones"] });
+      setName("");
+      setDate(undefined);
+      toast({ title: "Saved", description: "Milestone added to your registry." });
+    },
+    onError: () => {
+      toast({ title: "Error", description: "Could not save milestone.", variant: "destructive" });
+    },
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("milestones").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["milestones"] });
+    },
+  });
+
+  const getDaysUntil = (dateStr: string) => {
+    let target = new Date(dateStr);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    target.setHours(0, 0, 0, 0);
+    // For recurring dates, find next occurrence
+    while (isPast(target) && differenceInDays(today, target) > 0) {
+      target = addYears(target, 1);
+    }
+    const days = differenceInDays(target, today);
+    if (days === 0) return "Today!";
+    if (days === 1) return "Tomorrow";
+    return `${days} days to go`;
   };
 
   return (
@@ -113,43 +157,59 @@ const RegistryPage = () => {
                   </Popover>
                 </div>
                 <button
-                  onClick={addEntry}
-                  disabled={!name || !date}
+                  onClick={() => addMutation.mutate()}
+                  disabled={!name || !date || addMutation.isPending}
                   className="flex items-center justify-center gap-2 w-full text-xs uppercase tracking-[0.15em] py-3 bg-cta text-cta-foreground rounded-sm hover:bg-cta/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
-                  <Plus className="w-4 h-4" /> Save to Registry
+                  <Plus className="w-4 h-4" /> {addMutation.isPending ? "Saving…" : "Save to Registry"}
                 </button>
               </div>
             </div>
 
-            {/* Saved entries */}
-            {entries.length > 0 && (
-              <div className="scroll-fade-in">
-                <h3 className="font-serif text-lg font-semibold text-foreground mb-4">Your Dates</h3>
+            {/* Milestones list */}
+            <div className="scroll-fade-in">
+              <h3 className="font-serif text-lg font-semibold text-foreground mb-4">My Milestones</h3>
+              {isLoading ? (
                 <div className="space-y-3">
-                  {entries.map((entry) => (
+                  {[1, 2, 3].map((i) => (
+                    <Skeleton key={i} className="h-[72px] w-full rounded-lg" />
+                  ))}
+                </div>
+              ) : milestones.length === 0 ? (
+                <p className="text-sm text-muted-foreground text-center py-8 border border-dashed border-border rounded-lg">
+                  No milestones yet. Add your first date above.
+                </p>
+              ) : (
+                <div className="space-y-3">
+                  {milestones.map((m) => (
                     <div
-                      key={entry.id}
+                      key={m.id}
                       className="flex items-center justify-between bg-card border border-gold-light/50 rounded-lg px-5 py-4"
                     >
                       <div>
-                        <p className="text-sm font-medium text-foreground">{entry.name}</p>
+                        <p className="text-sm font-medium text-foreground">{m.name}</p>
                         <p className="text-xs text-muted-foreground">
-                          {entry.occasion} · {format(entry.date, "d MMMM yyyy")}
+                          {m.occasion} · {format(new Date(m.date), "d MMMM yyyy")}
                         </p>
                       </div>
-                      <button
-                        onClick={() => removeEntry(entry.id)}
-                        className="text-muted-foreground hover:text-destructive transition-colors"
-                        aria-label="Remove"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+                      <div className="flex items-center gap-4">
+                        <span className="flex items-center gap-1 text-xs font-medium text-primary">
+                          <Clock className="w-3.5 h-3.5" />
+                          {getDaysUntil(m.date)}
+                        </span>
+                        <button
+                          onClick={() => deleteMutation.mutate(m.id)}
+                          className="text-muted-foreground hover:text-destructive transition-colors"
+                          aria-label="Remove"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </section>
       </main>
