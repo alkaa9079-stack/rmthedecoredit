@@ -14,6 +14,30 @@ export type Database = {
   }
   public: {
     Tables: {
+      milestones: {
+        Row: {
+          created_at: string
+          date: string
+          id: string
+          name: string
+          occasion: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          id?: string
+          name: string
+          occasion?: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          id?: string
+          name?: string
+          occasion?: string
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           amazon_link: string | null
