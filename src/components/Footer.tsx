@@ -58,6 +58,9 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-primary-foreground/10 pt-8 text-center">
+          <p className="text-[11px] text-primary-foreground/40 font-medium mb-3">
+            As an Amazon Associate I earn from qualifying purchases.
+          </p>
           <p className="text-[11px] text-primary-foreground/30 leading-relaxed max-w-2xl mx-auto">
             <span className="text-primary-foreground/40">Amazon Associate Disclosure:</span>{" "}
             RM The Decor Edit is a participant in the Amazon Services LLC Associates Programme, an affiliate

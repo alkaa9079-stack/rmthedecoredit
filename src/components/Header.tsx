@@ -21,10 +21,10 @@ const Header = () => {
         </nav>
         <div className="flex items-center gap-4">
           <Link
-            to="/registry"
+            to="/tier/keepsake"
             className="hidden sm:inline-flex text-xs uppercase tracking-[0.15em] px-5 py-2.5 bg-foreground text-background rounded-none hover:bg-foreground/90 transition-colors"
           >
-            Book a Consultation
+            The Weekly Edit
           </Link>
         </div>
       </div>
