@@ -101,4 +101,11 @@
     -webkit-backdrop-filter: blur(16px) saturate(1.4);
     border: 1px solid hsla(40, 15%, 88%, 0.5);
   }
+
+  @keyframes spin-slow {
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 1.2s linear infinite;
+  }
 }
