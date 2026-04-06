@@ -3,8 +3,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { CartProvider } from "@/contexts/CartContext";
+import CartDrawer from "@/components/CartDrawer";
 import Index from "./pages/Index.tsx";
 import TierPage from "./pages/TierPage.tsx";
+import CollectionPage from "./pages/CollectionPage.tsx";
+import ProductPage from "./pages/ProductPage.tsx";
 import RegistryPage from "./pages/RegistryPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -13,19 +17,24 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/registry" element={<RegistryPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/tier/:tierId" element={<TierPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <CartProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <CartDrawer />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/registry" element={<RegistryPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/tier/:tierId" element={<TierPage />} />
+            <Route path="/collection/:categoryId" element={<CollectionPage />} />
+            <Route path="/product/:productId" element={<ProductPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </CartProvider>
   </QueryClientProvider>
 );
 
