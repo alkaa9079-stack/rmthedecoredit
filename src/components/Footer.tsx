@@ -19,14 +19,14 @@ const Footer = () => {
               Collections
             </h4>
             <div className="space-y-2">
-              <Link to="/tier/keepsake" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                The Keepsake
+              <Link to="/collection/birthday" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                Birthday Luxuries
               </Link>
-              <Link to="/tier/sanctuary" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                The Sanctuary
+              <Link to="/collection/housewarming" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                Housewarming Elegance
               </Link>
-              <Link to="/tier/grand_gesture" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                The Grand Gesture
+              <Link to="/collection/corporate" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                Corporate Gifting
               </Link>
             </div>
           </div>
