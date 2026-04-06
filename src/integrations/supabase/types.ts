@@ -41,28 +41,40 @@ export type Database = {
       products: {
         Row: {
           amazon_link: string | null
+          category: string | null
           created_at: string
+          description: string | null
+          hook: string | null
           id: string
           image_url: string | null
           name: string
+          perfect_for: string | null
           price: string
           tier: string
         }
         Insert: {
           amazon_link?: string | null
+          category?: string | null
           created_at?: string
+          description?: string | null
+          hook?: string | null
           id?: string
           image_url?: string | null
           name: string
+          perfect_for?: string | null
           price: string
           tier: string
         }
         Update: {
           amazon_link?: string | null
+          category?: string | null
           created_at?: string
+          description?: string | null
+          hook?: string | null
           id?: string
           image_url?: string | null
           name?: string
+          perfect_for?: string | null
           price?: string
           tier?: string
         }
