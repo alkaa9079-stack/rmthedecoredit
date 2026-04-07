@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Added this for navigation
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import InstagramGrid from "@/components/InstagramGrid";
@@ -21,14 +22,14 @@ const Index = () => {
       <Header />
       <HeroSection />
 
-      {/* --- THE EDIT SECTION --- */}
+      {/* --- THE EDIT SECTION (Functional Links) --- */}
       <section className="py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-serif text-center mb-16 tracking-[0.2em] uppercase text-gray-900">The Edit</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            {/* Keepsake - Luxury Home Decor Image */}
-            <div className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm">
+            {/* Keepsake */}
+            <Link to="/products?category=keepsake" className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm">
               <img 
                 src="https://unsplash.com" 
                 loading="lazy"
@@ -40,14 +41,14 @@ const Index = () => {
               <div className="relative h-full flex flex-col items-center justify-center text-white p-8 text-center">
                 <h3 className="text-3xl font-serif mb-2 tracking-wide">Keepsake</h3>
                 <p className="text-sm mb-8 italic opacity-90 tracking-widest">£25–£75</p>
-                <button className="px-10 py-4 border border-white text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500">
+                <div className="px-10 py-4 border border-white text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500">
                   Explore
-                </button>
+                </div>
               </div>
-            </div>
+            </Link>
 
-            {/* Sanctuary - Cozy Interior Image */}
-            <div className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm">
+            {/* Sanctuary */}
+            <Link to="/products?category=sanctuary" className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm">
               <img 
                 src="https://unsplash.com" 
                 loading="lazy"
@@ -59,14 +60,14 @@ const Index = () => {
               <div className="relative h-full flex flex-col items-center justify-center text-white p-8 text-center">
                 <h3 className="text-3xl font-serif mb-2 tracking-wide">Sanctuary</h3>
                 <p className="text-sm mb-8 italic opacity-90 tracking-widest">£75–£250</p>
-                <button className="px-10 py-4 border border-white text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500">
+                <div className="px-10 py-4 border border-white text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500">
                   Explore
-                </button>
+                </div>
               </div>
-            </div>
+            </Link>
 
-            {/* Grand Gesture - Premium Living Image */}
-            <div className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm">
+            {/* Grand Gesture */}
+            <Link to="/products?category=grand-gesture" className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm">
               <img 
                 src="https://unsplash.com" 
                 loading="lazy"
@@ -78,11 +79,11 @@ const Index = () => {
               <div className="relative h-full flex flex-col items-center justify-center text-white p-8 text-center">
                 <h3 className="text-3xl font-serif mb-2 tracking-wide">Grand Gesture</h3>
                 <p className="text-sm mb-8 italic opacity-90 tracking-widest">£250+</p>
-                <button className="px-10 py-4 border border-white text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500">
+                <div className="px-10 py-4 border border-white text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500">
                   Explore
-                </button>
+                </div>
               </div>
-            </div>
+            </Link>
 
           </div>
         </div>
