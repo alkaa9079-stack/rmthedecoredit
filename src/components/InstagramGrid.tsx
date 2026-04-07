@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
 const instagramImages = [
-  { id: 1, url: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80&auto=format", alt: "Luxury decor detail" },
-  { id: 2, url: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80&auto=format", alt: "Curated home sanctuary" },
-  { id: 3, url: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=400&q=80&auto=format", alt: "Statement furniture piece" },
-  { id: 4, url: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=400&q=80&auto=format", alt: "Thoughtful gift arrangement" },
-  { id: 5, url: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=400&q=80&auto=format", alt: "Minimalist shelf styling" },
-  { id: 6, url: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=400&q=80&auto=format", alt: "Premium lifestyle setting" },
+  { id: 1, url: "https://images.unsplash.com/photo-1549465220-1a8b9238f760?w=400&q=80&auto=format", alt: "Luxury wrapped gift with silk ribbon" },
+  { id: 2, url: "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=400&q=80&auto=format", alt: "Curated gift hamper arrangement" },
+  { id: 3, url: "https://images.unsplash.com/photo-1607469256872-48074e807b0f?w=400&q=80&auto=format", alt: "Premium gift packaging with flowers" },
+  { id: 4, url: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=400&q=80&auto=format", alt: "Elegant gift box with bow" },
+  { id: 5, url: "https://images.unsplash.com/photo-1531685250784-7569952593d2?w=400&q=80&auto=format", alt: "Beautifully presented gift set" },
+  { id: 6, url: "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?w=400&q=80&auto=format", alt: "Luxury gifting moment" },
 ];
 
 const InstagramGrid = () => {

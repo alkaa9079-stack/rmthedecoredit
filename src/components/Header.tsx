@@ -17,7 +17,10 @@ const Header = () => {
             The Edit
           </Link>
           <Link to="/collection/birthday" className="text-sm tracking-wide text-muted-foreground hover:text-foreground transition-colors">
-            Birthday
+            Birthdays
+          </Link>
+          <Link to="/collection/anniversary" className="text-sm tracking-wide text-muted-foreground hover:text-foreground transition-colors">
+            Anniversaries
           </Link>
           <Link to="/collection/housewarming" className="text-sm tracking-wide text-muted-foreground hover:text-foreground transition-colors">
             Housewarming

@@ -11,19 +11,24 @@ import useScrollFadeIn from "@/hooks/useScrollFadeIn";
 
 const categoryMeta: Record<string, { title: string; subtitle: string; description: string }> = {
   birthday: {
-    title: "Birthday Luxuries",
-    subtitle: "Celebrate Their Year",
-    description: "Extraordinary birthday gifts that transform a special day into an unforgettable moment. Each piece is hand-selected to surprise, delight, and inspire.",
+    title: "Birthday Gifting",
+    subtitle: "Celebrate in Style",
+    description: "Extraordinary birthday gifts that transform a special day into an unforgettable moment. Hand-selected to surprise, delight, and make them feel truly cherished.",
+  },
+  anniversary: {
+    title: "Anniversary Gifting",
+    subtitle: "Timeless Tokens of Love",
+    description: "Mark the milestones that matter most with gifts as enduring as your bond. Each piece is chosen to honour the years shared and the memories yet to come.",
   },
   housewarming: {
-    title: "Housewarming Elegance",
+    title: "Housewarming Gifting",
     subtitle: "Welcome Home",
-    description: "Curated pieces that turn a new house into a home of distinction. These gifts set the tone for a life well-lived in beautiful surroundings.",
+    description: "Curated gifts that turn a new house into a home of distinction. The perfect way to say welcome — with warmth, style, and lasting elegance.",
   },
   corporate: {
     title: "Corporate Gifting",
     subtitle: "The Professional Edit",
-    description: "Sophisticated gifts that strengthen relationships and celebrate achievements. Each piece reflects impeccable taste and lasting professionalism.",
+    description: "Sophisticated gifts that strengthen relationships and celebrate achievements. Each piece reflects impeccable taste and makes a lasting impression.",
   },
 };
 
