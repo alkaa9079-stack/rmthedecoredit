@@ -19,7 +19,7 @@ const OptimizedImage = ({
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-sm bg-gray-50" style={{ aspectRatio }}>
+    <div className="relative w-full overflow-hidden rounded-sm bg-muted" style={{ aspectRatio }}>
       {/* Reduced reliance on skeleton to show image faster */}
       {!loaded && (
         <Skeleton className="absolute inset-0 w-full h-full rounded-sm z-0" />
@@ -29,9 +29,9 @@ const OptimizedImage = ({
         alt={alt}
         loading={eager ? "eager" : "lazy"}
         decoding="async"
+        crossOrigin="anonymous"
         onLoad={() => setLoaded(true)}
-        // CHANGED: Removed the 'opacity-0' so the image starts appearing immediately while loading
-        className={`w-full h-full object-cover transition-opacity duration-500 z-10 ${className}`}
+        className={`w-full h-full object-cover transition-opacity duration-500 z-10 ${loaded ? "opacity-100" : "opacity-0"} ${className}`}
       />
     </div>
   );
