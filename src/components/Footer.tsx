@@ -16,17 +16,20 @@ const Footer = () => {
           </div>
           <div>
             <h4 className="text-xs uppercase tracking-[0.25em] text-primary-foreground/50 mb-4">
-              Collections
+              Milestones
             </h4>
             <div className="space-y-2">
               <Link to="/collection/birthday" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                Birthday Luxuries
+                Birthdays
+              </Link>
+              <Link to="/collection/anniversary" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                Anniversaries
               </Link>
               <Link to="/collection/housewarming" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                Housewarming Elegance
+                Housewarming
               </Link>
               <Link to="/collection/corporate" className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                Corporate Gifting
+                Corporate
               </Link>
             </div>
           </div>
