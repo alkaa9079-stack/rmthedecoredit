@@ -21,31 +21,40 @@ const Index = () => {
       <Header />
       <HeroSection />
 
-      {/* --- THE EDIT SECTION --- */}
-      <section className="py-16 px-4 bg-white">
+      {/* --- ENHANCED THE EDIT SECTION --- */}
+      <section className="py-20 px-4 bg-[#FAFAFA]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-serif text-center mb-12 text-gray-900">The Edit</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-4xl font-serif text-center mb-16 text-gray-900 tracking-wide">The Edit</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             
             {/* Keepsake */}
-            <div className="p-8 border border-gray-100 rounded-2xl text-center hover:shadow-lg transition-all duration-300">
-              <h3 className="text-2xl font-serif mb-2">Keepsake</h3>
-              <p className="text-gray-400 mb-4 italic font-light">£25–£75</p>
-              <p className="text-gray-600 leading-relaxed">Small, thoughtful luxury pieces for the home.</p>
+            <div className="group p-10 border border-gray-200 rounded-3xl text-center bg-white hover:border-gray-400 transition-all duration-500 hover:-translate-y-1 shadow-sm">
+              <h3 className="text-2xl font-serif mb-3 tracking-tight">Keepsake</h3>
+              <p className="text-gray-400 mb-6 italic font-light text-sm tracking-widest">£25–£75</p>
+              <p className="text-gray-600 leading-relaxed mb-8 text-sm">Small, thoughtful luxury pieces for the home.</p>
+              <button className="px-6 py-2 border border-gray-900 text-xs uppercase tracking-widest hover:bg-gray-900 hover:text-white transition-colors duration-300">
+                View Collection
+              </button>
             </div>
 
             {/* Sanctuary */}
-            <div className="p-8 border border-gray-100 rounded-2xl text-center hover:shadow-lg transition-all duration-300 bg-slate-50/30">
-              <h3 className="text-2xl font-serif mb-2">Sanctuary</h3>
-              <p className="text-gray-400 mb-4 italic font-light">£75–£250</p>
-              <p className="text-gray-600 leading-relaxed">Statement decor and meaningful gifts for your space.</p>
+            <div className="group p-10 border border-gray-200 rounded-3xl text-center bg-white hover:border-gray-400 transition-all duration-500 hover:-translate-y-1 shadow-sm">
+              <h3 className="text-2xl font-serif mb-3 tracking-tight">Sanctuary</h3>
+              <p className="text-gray-400 mb-6 italic font-light text-sm tracking-widest">£75–£250</p>
+              <p className="text-gray-600 leading-relaxed mb-8 text-sm">Statement decor and meaningful gifts for your space.</p>
+              <button className="px-6 py-2 border border-gray-900 text-xs uppercase tracking-widest hover:bg-gray-900 hover:text-white transition-colors duration-300">
+                View Collection
+              </button>
             </div>
 
             {/* Grand Gesture */}
-            <div className="p-8 border border-gray-100 rounded-2xl text-center hover:shadow-lg transition-all duration-300">
-              <h3 className="text-2xl font-serif mb-2">Grand Gesture</h3>
-              <p className="text-gray-400 mb-4 italic font-light">£250+</p>
-              <p className="text-gray-600 leading-relaxed">Premium, standout gifting pieces that last a lifetime.</p>
+            <div className="group p-10 border border-gray-200 rounded-3xl text-center bg-white hover:border-gray-400 transition-all duration-500 hover:-translate-y-1 shadow-sm">
+              <h3 className="text-2xl font-serif mb-3 tracking-tight">Grand Gesture</h3>
+              <p className="text-gray-400 mb-6 italic font-light text-sm tracking-widest">£250+</p>
+              <p className="text-gray-600 leading-relaxed mb-8 text-sm">Premium, standout gifting pieces that last a lifetime.</p>
+              <button className="px-6 py-2 border border-gray-900 text-xs uppercase tracking-widest hover:bg-gray-900 hover:text-white transition-colors duration-300">
+                View Collection
+              </button>
             </div>
 
           </div>
