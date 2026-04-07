@@ -19,9 +19,11 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
+      
+      {/* Hero Section is priority #1 */}
       <HeroSection />
 
-      {/* --- THE EDIT SECTION --- */}
+      {/* --- THE EDIT SECTION (Optimized) --- */}
       <section className="py-20 px-4 bg-[#FAFAFA]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-serif text-center mb-16 text-gray-900 tracking-wide">The Edit</h2>
@@ -61,7 +63,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Instagram Grid usually has many images, we load this later */}
       <InstagramGrid />
+      
       <Footer />
       <InnerCirclePopup />
     </div>
