@@ -19,7 +19,7 @@ const OptimizedImage = ({
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-sm bg-gray-50" style={{ aspectRatio }}>
+    <div className="relative w-full overflow-hidden rounded-sm bg-muted" style={{ aspectRatio }}>
       {/* Reduced reliance on skeleton to show image faster */}
       {!loaded && (
         <Skeleton className="absolute inset-0 w-full h-full rounded-sm z-0" />
