@@ -29,9 +29,9 @@ const OptimizedImage = ({
         alt={alt}
         loading={eager ? "eager" : "lazy"}
         decoding="async"
+        crossOrigin="anonymous"
         onLoad={() => setLoaded(true)}
-        // CHANGED: Removed the 'opacity-0' so the image starts appearing immediately while loading
-        className={`w-full h-full object-cover transition-opacity duration-500 z-10 ${className}`}
+        className={`w-full h-full object-cover transition-opacity duration-500 z-10 ${loaded ? "opacity-100" : "opacity-0"} ${className}`}
       />
     </div>
   );
