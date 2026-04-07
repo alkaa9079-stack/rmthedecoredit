@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
+import OptimizedImage from "@/components/OptimizedImage";
 import HeroSection from "@/components/HeroSection";
 import InstagramGrid from "@/components/InstagramGrid";
 import InnerCirclePopup from "@/components/InnerCirclePopup";
@@ -36,16 +37,11 @@ const Index = () => {
               { title: "Corporate", subtitle: "The Professional Edit", link: "/collection/corporate", img: "https://images.unsplash.com/photo-1531685250784-7569952593d2?w=800&q=80&auto=format" },
             ].map((card) => (
               <Link key={card.title} to={card.link} className="relative group h-[420px] overflow-hidden rounded-sm cursor-pointer shadow-sm bg-muted block">
-                <img 
-                  src={card.img}
-                  loading="lazy"
-                  decoding="async"
-                  crossOrigin="anonymous"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                  alt={`${card.title} Gifting`}
-                />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-500" />
-                <div className="relative h-full flex flex-col items-center justify-end text-white p-8 pb-10 text-center">
+                <div className="absolute inset-0">
+                  <OptimizedImage src={card.img} alt={`${card.title} Gifting`} aspectRatio="auto" className="transition-transform duration-1000 group-hover:scale-110" />
+                </div>
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-500 z-20" />
+                <div className="relative h-full flex flex-col items-center justify-end text-white p-8 pb-10 text-center z-30">
                   <p className="text-[10px] uppercase tracking-[0.3em] opacity-80 mb-2">{card.subtitle}</p>
                   <h3 className="text-2xl font-serif mb-6 tracking-wide">{card.title}</h3>
                   <div className="px-8 py-3 border border-white text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500">

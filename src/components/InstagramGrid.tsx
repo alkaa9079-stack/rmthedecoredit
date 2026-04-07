@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import OptimizedImage from "@/components/OptimizedImage";
 
 const instagramImages = [
   { id: 1, url: "https://images.unsplash.com/photo-1549465220-1a8b9238f760?w=400&q=80&auto=format", alt: "Luxury wrapped gift with silk ribbon" },
@@ -29,15 +30,8 @@ const InstagramGrid = () => {
               to="/collection/birthday"
               className="relative aspect-square overflow-hidden group bg-muted"
             >
-              <img
-                src={img.url}
-                alt={img.alt}
-                loading="lazy"
-                decoding="async"
-                crossOrigin="anonymous"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+              <OptimizedImage src={img.url} alt={img.alt} aspectRatio="1/1" className="transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 z-20" />
             </Link>
           ))}
         </div>
