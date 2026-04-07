@@ -37,7 +37,7 @@ const Index = () => {
                 alt="Keepsake Collection"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
-              <div className="relative h-full flex flex-col items-center justify-center text-white p-8">
+              <div className="relative h-full flex flex-col items-center justify-center text-white p-8 text-center">
                 <h3 className="text-3xl font-serif mb-2 tracking-wide">Keepsake</h3>
                 <p className="text-sm mb-8 italic opacity-90 tracking-widest">£25–£75</p>
                 <button className="px-10 py-4 border border-white text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500">
@@ -56,7 +56,7 @@ const Index = () => {
                 alt="Sanctuary Collection"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
-              <div className="relative h-full flex flex-col items-center justify-center text-white p-8">
+              <div className="relative h-full flex flex-col items-center justify-center text-white p-8 text-center">
                 <h3 className="text-3xl font-serif mb-2 tracking-wide">Sanctuary</h3>
                 <p className="text-sm mb-8 italic opacity-90 tracking-widest">£75–£250</p>
                 <button className="px-10 py-4 border border-white text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500">
@@ -75,7 +75,7 @@ const Index = () => {
                 alt="Grand Gesture Collection"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
-              <div className="relative h-full flex flex-col items-center justify-center text-white p-8">
+              <div className="relative h-full flex flex-col items-center justify-center text-white p-8 text-center">
                 <h3 className="text-3xl font-serif mb-2 tracking-wide">Grand Gesture</h3>
                 <p className="text-sm mb-8 italic opacity-90 tracking-widest">£250+</p>
                 <button className="px-10 py-4 border border-white text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500">
