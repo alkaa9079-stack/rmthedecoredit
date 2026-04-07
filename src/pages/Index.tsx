@@ -21,13 +21,13 @@ const Index = () => {
       <Header />
       <HeroSection />
 
-      {/* --- THE EDIT SECTION (Luxury & Fast) --- */}
+      {/* --- THE EDIT SECTION --- */}
       <section className="py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-serif text-center mb-16 tracking-[0.2em] uppercase text-gray-900">The Edit</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            {/* Keepsake */}
+            {/* Keepsake - Luxury Home Decor Image */}
             <div className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm">
               <img 
                 src="https://unsplash.com" 
@@ -36,7 +36,7 @@ const Index = () => {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 alt="Keepsake Collection"
               />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-500" />
               <div className="relative h-full flex flex-col items-center justify-center text-white p-8 text-center">
                 <h3 className="text-3xl font-serif mb-2 tracking-wide">Keepsake</h3>
                 <p className="text-sm mb-8 italic opacity-90 tracking-widest">£25–£75</p>
@@ -46,7 +46,7 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Sanctuary */}
+            {/* Sanctuary - Cozy Interior Image */}
             <div className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm">
               <img 
                 src="https://unsplash.com" 
@@ -55,7 +55,7 @@ const Index = () => {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 alt="Sanctuary Collection"
               />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-500" />
               <div className="relative h-full flex flex-col items-center justify-center text-white p-8 text-center">
                 <h3 className="text-3xl font-serif mb-2 tracking-wide">Sanctuary</h3>
                 <p className="text-sm mb-8 italic opacity-90 tracking-widest">£75–£250</p>
@@ -65,7 +65,7 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Grand Gesture */}
+            {/* Grand Gesture - Premium Living Image */}
             <div className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm">
               <img 
                 src="https://unsplash.com" 
@@ -74,7 +74,7 @@ const Index = () => {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 alt="Grand Gesture Collection"
               />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-500" />
               <div className="relative h-full flex flex-col items-center justify-center text-white p-8 text-center">
                 <h3 className="text-3xl font-serif mb-2 tracking-wide">Grand Gesture</h3>
                 <p className="text-sm mb-8 italic opacity-90 tracking-widest">£250+</p>
