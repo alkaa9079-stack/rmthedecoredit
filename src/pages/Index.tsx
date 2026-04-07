@@ -22,18 +22,17 @@ const Index = () => {
       <Header />
       <HeroSection />
 
-      {/* --- THE EDIT SECTION (CORB Fixed) --- */}
+      {/* --- THE EDIT SECTION (CORS & CORB FIXED) --- */}
       <section className="py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-serif text-center mb-16 tracking-[0.2em] uppercase text-gray-900">The Edit</h2>
+          <h2 className="text-4xl font-serif text-center mb-16 tracking-[0.2em] uppercase text-gray-900 font-medium">The Edit</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* Keepsake */}
-            <Link to="/products?category=keepsake" className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm bg-gray-100">
+            <Link to="/products?category=keepsake" className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm bg-gray-100 block">
               <img 
                 src="https://unsplash.com" 
                 loading="lazy"
-                crossOrigin="anonymous" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 alt="Keepsake Collection"
               />
@@ -48,11 +47,10 @@ const Index = () => {
             </Link>
 
             {/* Sanctuary */}
-            <Link to="/products?category=sanctuary" className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm bg-gray-100">
+            <Link to="/products?category=sanctuary" className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm bg-gray-100 block">
               <img 
                 src="https://unsplash.com" 
                 loading="lazy"
-                crossOrigin="anonymous"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 alt="Sanctuary Collection"
               />
@@ -67,11 +65,10 @@ const Index = () => {
             </Link>
 
             {/* Grand Gesture */}
-            <Link to="/products?category=grand-gesture" className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm bg-gray-100">
+            <Link to="/products?category=grand-gesture" className="relative group h-[500px] overflow-hidden rounded-sm cursor-pointer shadow-sm bg-gray-100 block">
               <img 
                 src="https://unsplash.com" 
                 loading="lazy"
-                crossOrigin="anonymous"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 alt="Grand Gesture Collection"
               />
