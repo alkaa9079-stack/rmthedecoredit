@@ -12,6 +12,8 @@ const HeroSection = () => {
         <img
           src={heroImage}
           alt="Luxury curated gift arrangement with cream and blush tones"
+          width={1920}
+          height={1080}
           className={`w-full h-full object-cover transition-opacity duration-500 ${heroLoaded ? "opacity-100" : "opacity-0"}`}
           loading="eager"
           decoding="async"
