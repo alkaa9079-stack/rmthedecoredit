@@ -38,6 +38,39 @@ export type Database = {
         }
         Relationships: []
       }
+      orders: {
+        Row: {
+          created_at: string
+          customer_email: string
+          customer_name: string
+          delivery_type: string
+          id: string
+          items: Json
+          milestone_date: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          customer_email: string
+          customer_name: string
+          delivery_type?: string
+          id?: string
+          items?: Json
+          milestone_date?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          customer_email?: string
+          customer_name?: string
+          delivery_type?: string
+          id?: string
+          items?: Json
+          milestone_date?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           amazon_link: string | null
