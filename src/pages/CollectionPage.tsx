@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ShoppingBag } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,6 +7,7 @@ import OptimizedImage from "@/components/OptimizedImage";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useCart } from "@/contexts/CartContext";
+import { appendAffiliateTag } from "@/lib/amazonAffiliate";
 import useScrollFadeIn from "@/hooks/useScrollFadeIn";
 
 const categoryMeta: Record<string, { title: string; subtitle: string; description: string }> = {
