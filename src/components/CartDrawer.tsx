@@ -1,10 +1,67 @@
-import { X, ShoppingBag, Truck, Gift, Calendar } from "lucide-react";
+import { X, ShoppingBag, Truck, Gift, Calendar, Loader2 } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const CartDrawer = () => {
   const { items, removeFromCart, clearCart, itemCount, isOpen, setIsOpen } = useCart();
   const [deliveryType, setDeliveryType] = useState("me");
+  const [milestoneDate, setMilestoneDate] = useState("");
+  const [customerName, setCustomerName] = useState("");
+  const [customerEmail, setCustomerEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
+
+  const handleCheckout = async () => {
+    if (!customerName.trim() || !customerEmail.trim()) {
+      toast.error("Please enter your name and email.");
+      return;
+    }
+    if (deliveryType === "milestone" && !milestoneDate) {
+      toast.error("Please select your milestone date.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const orderItems = items.map((i) => ({
+        id: i.id,
+        name: i.name,
+        price: i.price,
+        quantity: i.quantity,
+        image_url: i.image_url,
+      }));
+
+      const { data, error } = await supabase
+        .from("orders")
+        .insert({
+          customer_name: customerName.trim(),
+          customer_email: customerEmail.trim(),
+          delivery_type: deliveryType,
+          milestone_date: deliveryType === "milestone" ? milestoneDate : null,
+          items: orderItems as any,
+        })
+        .select("id")
+        .single();
+
+      if (error) throw error;
+
+      clearCart();
+      setIsOpen(false);
+      setCustomerName("");
+      setCustomerEmail("");
+      setMilestoneDate("");
+      setDeliveryType("me");
+      navigate(`/thank-you?order=${data.id}`);
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -60,7 +117,6 @@ const CartDrawer = () => {
               <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">Gifting Experience</p>
               
               <div className="space-y-3">
-                {/* Option 1: To Me */}
                 <label className={`flex items-start gap-3 p-3 border rounded-sm cursor-pointer transition-colors ${deliveryType === 'me' ? 'border-foreground bg-muted/50' : 'border-border'}`}>
                   <input type="radio" name="delivery" className="mt-1 accent-black" checked={deliveryType === 'me'} onChange={() => setDeliveryType('me')} />
                   <div>
@@ -69,7 +125,6 @@ const CartDrawer = () => {
                   </div>
                 </label>
 
-                {/* Option 2: To Loved One */}
                 <label className={`flex items-start gap-3 p-3 border rounded-sm cursor-pointer transition-colors ${deliveryType === 'them' ? 'border-foreground bg-muted/50' : 'border-border'}`}>
                   <input type="radio" name="delivery" className="mt-1 accent-black" checked={deliveryType === 'them'} onChange={() => setDeliveryType('them')} />
                   <div>
@@ -78,7 +133,6 @@ const CartDrawer = () => {
                   </div>
                 </label>
 
-                {/* Option 3: Milestone Delivery */}
                 <label className={`flex items-start gap-3 p-3 border rounded-sm cursor-pointer transition-colors ${deliveryType === 'milestone' ? 'border-foreground bg-muted/50' : 'border-border'}`}>
                   <input type="radio" name="delivery" className="mt-1 accent-black" checked={deliveryType === 'milestone'} onChange={() => setDeliveryType('milestone')} />
                   <div>
@@ -87,13 +141,37 @@ const CartDrawer = () => {
                   </div>
                 </label>
 
-                {/* Conditional Date Picker for Milestone */}
                 {deliveryType === 'milestone' && (
                   <div className="mt-4 p-3 bg-foreground/5 rounded-sm border border-dashed border-foreground/20">
                     <p className="text-[10px] uppercase tracking-wider mb-2 font-medium">Select Milestone Date</p>
-                    <input type="date" className="w-full bg-transparent border-b border-foreground/30 py-1 text-xs focus:outline-none" />
+                    <input
+                      type="date"
+                      value={milestoneDate}
+                      onChange={(e) => setMilestoneDate(e.target.value)}
+                      min={new Date().toISOString().split("T")[0]}
+                      className="w-full bg-transparent border-b border-foreground/30 py-1 text-xs focus:outline-none"
+                    />
                   </div>
                 )}
+              </div>
+
+              {/* Customer Details */}
+              <div className="mt-6 pt-6 border-t border-border space-y-3">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">Your Details</p>
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  value={customerName}
+                  onChange={(e) => setCustomerName(e.target.value)}
+                  className="w-full bg-transparent border-b border-foreground/20 py-2 text-xs placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground/50"
+                />
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  value={customerEmail}
+                  onChange={(e) => setCustomerEmail(e.target.value)}
+                  className="w-full bg-transparent border-b border-foreground/20 py-2 text-xs placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground/50"
+                />
               </div>
             </div>
           )}
@@ -102,8 +180,12 @@ const CartDrawer = () => {
         {/* Footer Actions */}
         {items.length > 0 && (
           <div className="p-6 border-t border-border space-y-3">
-            <button className="w-full text-xs uppercase tracking-[0.2em] py-4 bg-foreground text-background hover:bg-foreground/90 transition-colors rounded-sm">
-              Proceed to Checkout
+            <button
+              onClick={handleCheckout}
+              disabled={isSubmitting}
+              className="w-full flex items-center justify-center gap-2 text-xs uppercase tracking-[0.2em] py-4 bg-foreground text-background hover:bg-foreground/90 transition-colors rounded-sm disabled:opacity-50"
+            >
+              {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : "Place Order"}
             </button>
             <button onClick={clearCart} className="w-full text-[9px] uppercase tracking-[0.1em] py-2 text-muted-foreground hover:text-foreground transition-colors">
               Clear Edit
