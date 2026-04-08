@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { CartProvider } from "@/contexts/CartContext";
 import CartDrawer from "@/components/CartDrawer";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 import Index from "./pages/Index.tsx";
 import TierPage from "./pages/TierPage.tsx";
 import CollectionPage from "./pages/CollectionPage.tsx";
@@ -24,6 +25,7 @@ const App = () => (
         <Sonner />
         <CartDrawer />
         <SpeedInsights />
+        <Analytics />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
