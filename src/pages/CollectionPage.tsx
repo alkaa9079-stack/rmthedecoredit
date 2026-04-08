@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ShoppingBag } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,6 +7,7 @@ import OptimizedImage from "@/components/OptimizedImage";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useCart } from "@/contexts/CartContext";
+import { appendAffiliateTag } from "@/lib/amazonAffiliate";
 import useScrollFadeIn from "@/hooks/useScrollFadeIn";
 
 const categoryMeta: Record<string, { title: string; subtitle: string; description: string }> = {
@@ -117,18 +118,21 @@ const CollectionPage = () => {
                         <p className="text-xs italic text-muted-foreground/70 mb-1">{(product as any).hook}</p>
                       )}
                     </Link>
-                    <button
-                      onClick={() => addToCart({
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        image_url: product.image_url,
-                      })}
-                      className="mt-4 w-full flex items-center justify-center gap-2 text-xs uppercase tracking-[0.15em] py-2.5 border border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-colors rounded-sm"
-                    >
-                      <ShoppingBag className="w-3.5 h-3.5" />
-                      Add to Edit
-                    </button>
+                    {product.amazon_link && (
+                      <div className="flex flex-col items-center gap-1 mt-4">
+                        <span className="text-[10px] uppercase tracking-[0.2em] font-sans text-muted-foreground/60 font-medium">
+                          #Ad
+                        </span>
+                        <a
+                          href={appendAffiliateTag(product.amazon_link)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full flex items-center justify-center gap-2 text-xs uppercase tracking-[0.15em] py-2.5 border border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-colors rounded-sm"
+                        >
+                          Shop Now <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
