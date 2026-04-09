@@ -35,10 +35,13 @@ const RegistryPage = () => {
   const addMutation = useMutation({
     mutationFn: async () => {
       if (!name || !date) return;
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) throw new Error("Please sign in first.");
       const { error } = await supabase.from("milestones").insert({
         name,
         occasion,
         date: format(date, "yyyy-MM-dd"),
+        user_id: user.id,
       });
       if (error) throw error;
     },
