@@ -134,7 +134,7 @@ const TierPage = () => {
                           rel="noopener noreferrer"
                           className="w-full flex items-center justify-center gap-2 text-xs uppercase tracking-[0.15em] py-2.5 border border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-colors rounded-sm"
                         >
-                          View on Amazon <ExternalLink className="w-3.5 h-3.5" />
+                          Shop Now <ExternalLink className="w-3.5 h-3.5" />
                         </a>
                       </div>
                     )}

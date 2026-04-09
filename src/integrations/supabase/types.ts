@@ -21,6 +21,7 @@ export type Database = {
           id: string
           name: string
           occasion: string
+          user_id: string | null
         }
         Insert: {
           created_at?: string
@@ -28,6 +29,7 @@ export type Database = {
           id?: string
           name: string
           occasion?: string
+          user_id?: string | null
         }
         Update: {
           created_at?: string
@@ -35,6 +37,43 @@ export type Database = {
           id?: string
           name?: string
           occasion?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          created_at: string
+          customer_email: string
+          customer_name: string
+          delivery_type: string
+          id: string
+          items: Json
+          milestone_date: string | null
+          status: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          customer_email: string
+          customer_name: string
+          delivery_type?: string
+          id?: string
+          items?: Json
+          milestone_date?: string | null
+          status?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          customer_email?: string
+          customer_name?: string
+          delivery_type?: string
+          id?: string
+          items?: Json
+          milestone_date?: string | null
+          status?: string
+          user_id?: string | null
         }
         Relationships: []
       }

@@ -13,6 +13,7 @@ import CollectionPage from "./pages/CollectionPage.tsx";
 import ProductPage from "./pages/ProductPage.tsx";
 import RegistryPage from "./pages/RegistryPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
+import ThankYouPage from "./pages/ThankYouPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -23,10 +24,10 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <CartDrawer />
         <SpeedInsights />
         <Analytics />
         <BrowserRouter>
+          <CartDrawer />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/registry" element={<RegistryPage />} />
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/tier/:tierId" element={<TierPage />} />
             <Route path="/collection/:categoryId" element={<CollectionPage />} />
             <Route path="/product/:productId" element={<ProductPage />} />
+            <Route path="/thank-you" element={<ThankYouPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
