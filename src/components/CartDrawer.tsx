@@ -34,6 +34,13 @@ const CartDrawer = () => {
         image_url: i.image_url,
       }));
 
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        toast.error("Please sign in to place an order.");
+        setIsSubmitting(false);
+        return;
+      }
+
       const { data, error } = await supabase
         .from("orders")
         .insert({
@@ -42,6 +49,7 @@ const CartDrawer = () => {
           delivery_type: deliveryType,
           milestone_date: deliveryType === "milestone" ? milestoneDate : null,
           items: orderItems as any,
+          user_id: user.id,
         })
         .select("id")
         .single();
