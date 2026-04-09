@@ -19,7 +19,9 @@ const RegistryPage = () => {
   const [name, setName] = useState("");
   const [occasion, setOccasion] = useState("Birthday");
   const [date, setDate] = useState<Date>();
+  const [showAuth, setShowAuth] = useState(false);
   const queryClient = useQueryClient();
+  const { user } = useAuth();
   useScrollFadeIn();
 
   const { data: milestones = [], isLoading } = useQuery({
