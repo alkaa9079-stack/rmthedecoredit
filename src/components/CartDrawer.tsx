@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useAuth } from "@/hooks/useAuth";
+import AuthModal from "@/components/AuthModal";
 
 const CartDrawer = () => {
   const { items, removeFromCart, clearCart, itemCount, isOpen, setIsOpen } = useCart();
@@ -12,9 +14,15 @@ const CartDrawer = () => {
   const [customerName, setCustomerName] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   const handleCheckout = async () => {
+    if (!user) {
+      setShowAuth(true);
+      return;
+    }
     if (!customerName.trim() || !customerEmail.trim()) {
       toast.error("Please enter your name and email.");
       return;
@@ -33,13 +41,6 @@ const CartDrawer = () => {
         quantity: i.quantity,
         image_url: i.image_url,
       }));
-
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        toast.error("Please sign in to place an order.");
-        setIsSubmitting(false);
-        return;
-      }
 
       const { data, error } = await supabase
         .from("orders")
@@ -201,6 +202,7 @@ const CartDrawer = () => {
           </div>
         )}
       </div>
+      <AuthModal open={showAuth} onClose={() => setShowAuth(false)} />
     </div>
   );
 };

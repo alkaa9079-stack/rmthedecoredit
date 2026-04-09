@@ -12,12 +12,16 @@ import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import useScrollFadeIn from "@/hooks/useScrollFadeIn";
+import { useAuth } from "@/hooks/useAuth";
+import AuthModal from "@/components/AuthModal";
 
 const RegistryPage = () => {
   const [name, setName] = useState("");
   const [occasion, setOccasion] = useState("Birthday");
   const [date, setDate] = useState<Date>();
+  const [showAuth, setShowAuth] = useState(false);
   const queryClient = useQueryClient();
+  const { user } = useAuth();
   useScrollFadeIn();
 
   const { data: milestones = [], isLoading } = useQuery({
@@ -161,7 +165,10 @@ const RegistryPage = () => {
                   </Popover>
                 </div>
                 <button
-                  onClick={() => addMutation.mutate()}
+                  onClick={() => {
+                    if (!user) { setShowAuth(true); return; }
+                    addMutation.mutate();
+                  }}
                   disabled={!name || !date || addMutation.isPending}
                   className="flex items-center justify-center gap-2 w-full text-xs uppercase tracking-[0.15em] py-3 bg-cta text-cta-foreground rounded-sm hover:bg-cta/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
@@ -214,6 +221,7 @@ const RegistryPage = () => {
         </section>
       </main>
       <Footer />
+      <AuthModal open={showAuth} onClose={() => setShowAuth(false)} />
     </div>
   );
 };
