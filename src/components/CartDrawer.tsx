@@ -202,6 +202,7 @@ const CartDrawer = () => {
           </div>
         )}
       </div>
+      <AuthModal open={showAuth} onClose={() => setShowAuth(false)} />
     </div>
   );
 };
